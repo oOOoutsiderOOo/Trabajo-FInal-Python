@@ -16,6 +16,9 @@ def loginView(request):
     
     return render(request, 'login.html', {"form":form})
 
+def profileView(request):
+    return render(request, 'profile.html', {})
+
 #API ----------------------------------------------------------
 
 def signup(request):
@@ -51,4 +54,18 @@ def login(request):
                 return response
             else: 
                 return HttpResponse("Incorrect username or password. Please try again.")
+            
+def logout(request):
+    response = HttpResponseRedirect("/login/")
+    response.delete_cookie('user_id')
+    response.delete_cookie('access_token')
+    return response
+
+def editPic(request):
+    uid = request.COOKIES.get('user_id')
+    user = User.objects.get(id=uid)
+    user.profile_image_url = request.POST.get('profile_picture')
+    user.save()
+    print(request.POST.get('profile_picture'))
+    return HttpResponseRedirect("/")
 

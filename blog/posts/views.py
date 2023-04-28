@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from users.models import User
@@ -23,4 +23,4 @@ def newPost(request):
         user = User.objects.get(id=user_id)
         post = Post(title=title, body=body, author=user)
         post.save()
-        return HttpResponse("Success")
+        return HttpResponseRedirect('/')
