@@ -33,7 +33,7 @@
         </header>
         <div class="wrapper">
             <h1>Write a new blog entry</h1>
-            <form class="form" action="/api/newPost/" method="post">
+            <form class="form" action="/api/editPost/" method="post">
                 {% csrf_token %} {{form}}
                 <input class="post-button" type="submit" value="Publish"></input>
             </form>

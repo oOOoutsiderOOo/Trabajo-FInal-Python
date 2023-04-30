@@ -10,4 +10,8 @@ def index(request):
     profile_pic_form = EditPicForm()
     uid = request.COOKIES.get('user_id')
     user = User.objects.get(id=uid)
+    
+    for post in posts:
+        post.body = post.body[:200] + "..."
+        
     return render(request, 'home.html', {'posts': posts, "user": user, 'profile_pic_form': profile_pic_form})

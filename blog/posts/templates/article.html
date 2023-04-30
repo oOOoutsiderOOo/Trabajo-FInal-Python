@@ -7,8 +7,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{% static 'styles/global.css' %}" />
-        <link rel="stylesheet" href="{% static 'styles/newPost.css' %}" />
-        <title>New blog post</title>
+        <link rel="stylesheet" href="{% static 'styles/article.css' %}" />
+        <title>Document</title>
     </head>
     <body>
         <header>
@@ -16,28 +16,35 @@
                 <a href="/">
                     <div class="app-title">Djablog</div>
                 </a>
-                <div>
-                    {% comment %}
-                    <li><a href="{% url '/' %}">Home</a></li>
-                    <li><a href="{% url 'blog' %}">Blog</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    {% endcomment %}
-                </div>
                 <div class="profile-picture"><img src="{{user.profile_image_url}}" alt=""></div>
                 <div class="popup-wrapper">
+                    <div class="popup-item"><a class"menu-item" href="{% url 'newPostView' %}">Write a new article</a></div>
                     <div class="popup-item" id="change-pic-button">Change profile picture</div>
-                    <div class="popup-item">Ble ble</div>
                     <div class="popup-item" id="logout-button"><a href="/api/logout">Log out</a></div>
                 </div>
             </nav>
         </header>
-        <div class="wrapper">
-            <h1>Write a new blog entry</h1>
-            <form class="form" action="/api/newPost/" method="post">
-                {% csrf_token %} {{form}}
-                <input class="post-button" type="submit" value="Publish"></input>
-            </form>
-        </div>
+        <main>
+            <img class="background" src="{% static 'bg2.jpg' %}" alt="" />
+            <div class="posts">
+
+                <article class="post-wrapper">
+                    {% if post.author.id == user_id %}
+                    <div class="buttons-row">
+                        <button class="edit-button"><a href="/editPost?id={{post.id}}">Edit</a></button>
+                        <button class="delete-button"><a href="/api/deletePost?id={{post.id}}">Delete</a></button>
+                    </div>
+                    {% endif %}
+
+                    <h2 class="title">{{post.title}}</h2>
+                    <p class="post-body">{{post.body}}</p>
+                    <div class="post-footer">
+                        <div class="post-author-row">by <span class="post-author">{{post.author}}</span></div>
+                </article>
+
+            </div>
+        </main>
+
         <div class="modal-wrapper">
             <div class="modal">
                 <form class="profile-pic-form" action="api/update_pic/" method="post">{% csrf_token %}{{profile_pic_form}}
@@ -46,6 +53,7 @@
                 <button class="cancel-button">Cancel</button>
             </div>
         </div>
+    <script src="{% static 'scripts/paragraphs.js'%}"></script>
     <script src="{% static 'scripts/navbar.js'%}"></script>
     </body>
 </html>
