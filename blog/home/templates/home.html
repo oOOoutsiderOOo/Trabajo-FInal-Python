@@ -1,6 +1,6 @@
-{% extends "main.html" %}
+{%extends "main.html"%}
 
-{%load static%}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,31 +10,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{% static 'styles/global.css' %}" />
         {% block head %}
-        <link rel="stylesheet" href="{% static 'styles/article.css' %}" />
-        <title>{{post.title}}</title>
+        <link rel="stylesheet" href="{% static 'styles/home.css' %}" />
+        <title>Home</title>
         {% endblock %}
     </head>
     <body>
-        {% block main%}
+
+        {% block main %}
         <main>
             <img class="background" src="{% static 'bg2.jpg' %}" alt="" />
             <div class="posts">
-
+                {% for post in posts %}
                 <article class="post-wrapper">
-                    {% if post.author.id == user_id %}
-                    <div class="buttons-row">
-                        <button class="edit-button"><a href="/editPost?id={{post.id}}">Edit</a></button>
-                        <button class="delete-button"><a href="/api/deletePost?id={{post.id}}">Delete</a></button>
-                    </div>
-                    {% endif %}
-
-                    <h2 class="title">{{post.title}}</h2>
+                    <a href="/article?id={{post.id}}">
+                        <h2 class="title">{{post.title}}</h2>
+                    </a>
                     <p class="post-body">{{post.body}}</p>
                     <div class="post-footer">
                         <div class="post-author-row">by <span class="post-author">{{post.author}}</span></div>
-                    </article>
-                </div>
-            </main>
-            {% endblock %}
+                </article>
+                {% endfor %}
+            </div>
+        </main>
+        {% endblock %}
+
     </body>
-    </html>
+</html>

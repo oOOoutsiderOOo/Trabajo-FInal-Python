@@ -1,3 +1,4 @@
+{% extends "main.html" %}
 {%load static%}
 
 <!DOCTYPE html>
@@ -7,45 +8,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{% static 'styles/global.css' %}" />
+        {% block head %} 
         <link rel="stylesheet" href="{% static 'styles/newPost.css' %}" />
         <title>New blog post</title>
+        {% endblock %}
     </head>
     <body>
-        <header>
-            <nav class="navbar">
-                <a href="/">
-                    <div class="app-title">Djablog</div>
-                </a>
-                <div>
-                    {% comment %}
-                    <li><a href="{% url '/' %}">Home</a></li>
-                    <li><a href="{% url 'blog' %}">Blog</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    {% endcomment %}
-                </div>
-                <div class="profile-picture"><img src="{{user.profile_image_url}}" alt=""></div>
-                <div class="popup-wrapper">
-                    <div class="popup-item" id="change-pic-button">Change profile picture</div>
-                    <div class="popup-item">Ble ble</div>
-                    <div class="popup-item" id="logout-button"><a href="/api/logout">Log out</a></div>
-                </div>
-            </nav>
-        </header>
+        {% block main %} 
         <div class="wrapper">
             <h1>Write a new blog entry</h1>
             <form class="form" action="/api/newPost/" method="post">
                 {% csrf_token %} {{form}}
                 <input class="post-button" type="submit" value="Publish"></input>
             </form>
+            {% endblock %} 
         </div>
-        <div class="modal-wrapper">
-            <div class="modal">
-                <form class="profile-pic-form" action="api/update_pic/" method="post">{% csrf_token %}{{profile_pic_form}}
-                    <button class="save-button" type="submit">Save</button>
-                </form>               
-                <button class="cancel-button">Cancel</button>
-            </div>
-        </div>
-    <script src="{% static 'scripts/navbar.js'%}"></script>
     </body>
 </html>
