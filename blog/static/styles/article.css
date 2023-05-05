@@ -171,7 +171,8 @@ main {
 }
 
 .edit-button,
-.delete-button {
+.delete-button,
+.send-button {
     font-family: "Raleway", sans-serif;
     background-color: hsl(350, 100%, 60%);
     color: hsl(0, 0%, 95%);
@@ -198,4 +199,44 @@ main {
 
 .post-author {
     color: hsl(350, 100%, 60%);
+}
+
+.new-comment-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    background-color: hsl(0, 0%, 6%);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    gap: 1rem;
+    max-width: 1000px;
+}
+
+.new-comment-wrapper form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    gap: 1rem;
+}
+
+.new-comment-wrapper label {
+    display: none;
+}
+
+.new-comment-wrapper textarea {
+    text-align: start;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid hsl(0, 0%, 50%);
+    font-size: 1.25rem;
+    height: 10rem;
+}
+
+.send-button {
+    align-self: center;
 }

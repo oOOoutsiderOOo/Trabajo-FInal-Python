@@ -15,7 +15,7 @@
         {% endblock %}
     </head>
     <body>
-        {% block main%}
+        {% block main %}
         <main>
             <img class="background" src="{% static 'bg2.jpg' %}" alt="" />
             <div class="posts">
@@ -32,9 +32,19 @@
                     <p class="post-body">{{post.body}}</p>
                     <div class="post-footer">
                         <div class="post-author-row">Escrito por <span class="post-author">{{post.author}}</span></div>
-                    </article>
+                </article>
+                <div class="new-comment-wrapper">
+                    <p>Deja tu comentario:</p>
+                    <form  action="/api/newComment/" method="POST">
+                        {% csrf_token %} {{ new_comment_form }}
+                        <input type="hidden" name="post_id" value="{{post.id}}">
+                        <input type="hidden" name="user_id" value="{{user_id}}">
+                        <input class="send-button" type="submit" value="Enviar">
+                    </form>
+ 
                 </div>
-            </main>
-            {% endblock %}
+            </div>
+        </main>
+        {% endblock %}
     </body>
     </html>
