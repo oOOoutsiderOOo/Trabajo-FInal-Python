@@ -201,7 +201,8 @@ main {
     color: hsl(350, 100%, 60%);
 }
 
-.new-comment-wrapper {
+.new-comment-wrapper,
+.comments-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -212,6 +213,21 @@ main {
     padding: 2rem;
     gap: 1rem;
     max-width: 1000px;
+}
+
+.comment {
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0rem 0rem 1rem;
+    border-bottom: 1px solid hsl(0, 0%, 50%);
+}
+
+.comment-author {
+    color: hsl(350, 100%, 60%);
 }
 
 .new-comment-wrapper form {

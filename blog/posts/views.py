@@ -4,8 +4,10 @@ from users.forms import EditPicForm
 
 from users.models import User
 
-from .forms import EditPostForm, NewPostForm
 from comments.forms import NewCommentForm
+from comments.models import Comment
+
+from .forms import EditPostForm, NewPostForm
 from .models import Post
 
 
@@ -32,8 +34,10 @@ def articleView(request):
     post = Post.objects.get(id=id)
     user_id = int(request.COOKIES.get('user_id'))
     user = User.objects.get(id=user_id)
+    comments = Comment.objects.filter(post_id=id)
+    print(comments)
     new_comment_form = NewCommentForm()
-    return render(request, 'article.html', {"post":post, "user_id":user_id, "user":user, "new_comment_form":new_comment_form })
+    return render(request, 'article.html', {"post":post, "user_id":user_id, "user":user, "new_comment_form":new_comment_form, "comments":comments })
 
 #API------------------------------------------------
 

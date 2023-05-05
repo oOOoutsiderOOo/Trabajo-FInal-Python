@@ -33,6 +33,17 @@
                     <div class="post-footer">
                         <div class="post-author-row">Escrito por <span class="post-author">{{post.author}}</span></div>
                 </article>
+
+                <div class="comments-wrapper">
+                    <h3>Comentarios:</h3>
+                    {% for comment in comments %}
+                    <div class="comment">
+                        <p class="comment-author">{{comment.user.username}}</p>
+                        <p class="comment-body">{{comment.content}}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
                 <div class="new-comment-wrapper">
                     <p>Deja tu comentario:</p>
                     <form  action="/api/newComment/" method="POST">
