@@ -1,15 +1,15 @@
 from django import forms
 
 class NewPostForm(forms.Form):
-    title = forms.CharField(label="Title", max_length=50)
-    body = forms.CharField(label="Body", max_length=10000, widget=forms.Textarea)
+    
+    title = forms.CharField(label="Título", max_length=50)
+    body = forms.CharField(label="Cuerpo", max_length=10000, widget=forms.Textarea)
 
 class EditPostForm(forms.Form):
-    
-    def __init__(self,   *args, **kwargs):
-        super().__init__(*args, **kwargs)
 
-    title = forms.CharField(label="Title", max_length=50)
-    body = forms.CharField(label="Body", max_length=10000, widget=forms.Textarea)
+    title = forms.CharField(label="Título", max_length=50)
+    body = forms.CharField(label="Cuerpo", max_length=10000, widget=forms.Textarea)
+    
+    #Se le pasa el id como input oculta para poder identificar el post a editar
     id = forms.IntegerField(widget=forms.HiddenInput())
     

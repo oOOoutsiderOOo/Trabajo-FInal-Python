@@ -3,7 +3,7 @@
 {%load static%}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -23,15 +23,15 @@
                 <article class="post-wrapper">
                     {% if post.author.id == user_id %}
                     <div class="buttons-row">
-                        <button class="edit-button"><a href="/editPost?id={{post.id}}">Edit</a></button>
-                        <button class="delete-button"><a href="/api/deletePost?id={{post.id}}">Delete</a></button>
+                        <button class="edit-button"><a href="/editPost?id={{post.id}}">Editar</a></button>
+                        <button class="delete-button"><a href="/api/deletePost?id={{post.id}}">Eliminar</a></button>
                     </div>
                     {% endif %}
 
                     <h2 class="title">{{post.title}}</h2>
                     <p class="post-body">{{post.body}}</p>
                     <div class="post-footer">
-                        <div class="post-author-row">by <span class="post-author">{{post.author}}</span></div>
+                        <div class="post-author-row">Escrito por <span class="post-author">{{post.author}}</span></div>
                     </article>
                 </div>
             </main>

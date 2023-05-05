@@ -7,6 +7,8 @@ const searchParams = url.searchParams;
 const credentialsError = searchParams.get("error") === "invalid_credentials" ? true : false;
 const usernameTaken = searchParams.get("error") === "username_taken" ? true : false;
 
+//Chequea la url para ver si hay errores y los muestra
+
 if (credentialsError || usernameTaken) {
     usernameInput.classList.add("is-invalid");
     passwordInput.classList.add("is-invalid");

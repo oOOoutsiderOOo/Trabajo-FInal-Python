@@ -1,27 +1,27 @@
 {%load static%}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{%static 'styles/login.css' %}" />
-        <title>Djablog - Sign up</title>
+        <title>Registro</title>
     </head>
     <body>
         <main>
             <img class="background" src="{% static 'bg1.jpg' %}" alt="" />
             <div class="wrapper">
                 <div class="form-wrapper">
-                    <h1 class="title">Sign up</h1>
+                    <h1 class="title">Registro</h1>
                     <p class="error-message hide">Username already in use</p>
                     <form class="form" action="/api/signup/" method="post">
                         {% csrf_token %} {{form}}
-                        <input class="button" type="submit" value="Sign up" />
+                        <input class="button" type="submit" value="Registrarse" />
                     </form>
 
-                    <p class="bottom-message">Already have an account? <a href="{% url 'loginPage' %}">Log in</a></p>
+                    <p class="bottom-message">Ya tienes una cuenta? <a href="{% url 'loginPage' %}">Ingresa</a></p>
                 </div>
             </div>
         </main>

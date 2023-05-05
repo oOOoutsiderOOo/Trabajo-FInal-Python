@@ -1,13 +1,13 @@
 {%load static%}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{%static 'styles/login.css' %}" />
-        <title>Djablog - Log in</title>
+        <title>Log in</title>
     </head>
     <body>
         <main>
@@ -15,13 +15,13 @@
             <div class="wrapper">
                 <div class="form-wrapper">
                     <h1 class="title">Log in</h1>
-                    <p class="error-message hide">Wrong username or password</p>
+                    <p class="error-message hide">Nombre de usuario o password incorrecto</p>
                     <form class="form" action="/api/login/" method="post">
                         {% csrf_token %} {{form}}
-                        <input class="button" type="submit" value="Log in" />
+                        <input class="button" type="submit" value="Ingresa" />
                     </form>
 
-                    <p class="bottom-message">Don't have an account? <a href="{% url 'signupPage' %}">Sign up</a></p>
+                    <p class="bottom-message">No tienes una cuenta? <a href="{% url 'signupPage' %}">Regístrate</a></p>
                 </div>
             </div>
         </main>

@@ -3,7 +3,7 @@
 {%load static%}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,16 +11,16 @@
         <link rel="stylesheet" href="{% static 'styles/global.css' %}" />
         {% block head %}
         <link rel="stylesheet" href="{% static 'styles/newPost.css' %}" />
-        <title>New blog post</title>
+        <title>Edición</title>
         {% endblock %}
     </head>
     <body>
         {% block main%}
         <div class="wrapper">
-            <h1>Edit your article</h1>
+            <h1>Edita tu artículo</h1>
             <form class="form" action="/api/editPost/" method="post">
                 {% csrf_token %} {{form}}
-                <input class="post-button" type="submit" value="Save changes"></input>
+                <input class="post-button" type="submit" value="Guardar cambios"></input>
             </form>
         </div>
         {% endblock %}

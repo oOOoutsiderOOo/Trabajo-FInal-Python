@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,9 +17,9 @@
             </a>
             <div class="profile-picture"><img src="{{user.profile_image_url}}" alt=""></div>
             <div class="popup-wrapper">
-                <div class="popup-item"><a class"menu-item" href="{% url 'newPostView' %}">Write a new article</a></div>
-                <div class="popup-item" id="change-pic-button">Change profile picture</div>
-                <div class="popup-item" id="logout-button"><a href="/api/logout">Log out</a></div>
+                <div class="popup-item"><a class"menu-item" href="{% url 'newPostView' %}">Escribe un nuevo artículo</a></div>
+                <div class="popup-item" id="change-pic-button">Cambiar imagen de perfil</div>
+                <div class="popup-item" id="logout-button"><a href="/api/logout">Salir</a></div>
             </div>
         </nav>
     </header>
@@ -28,9 +28,9 @@
         <div class="modal-wrapper">
             <div class="modal">
                 <form class="profile-pic-form" action="api/update_pic/" method="post">{% csrf_token %}{{profile_pic_form}}
-                    <button class="save-button" type="submit">Save</button>
+                    <button class="save-button" type="submit">Guardar</button>
                 </form>               
-                <button class="cancel-button">Cancel</button>
+                <button class="cancel-button">Cancelar</button>
             </div>
         </div>
         <script src="{% static 'scripts/paragraphs.js'%}"></script>

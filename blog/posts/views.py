@@ -9,6 +9,7 @@ from .models import Post
 
 
 #Views----------------------------------------------
+
 def newPostView(request):
     form = NewPostForm()
     profile_pic_form = EditPicForm()

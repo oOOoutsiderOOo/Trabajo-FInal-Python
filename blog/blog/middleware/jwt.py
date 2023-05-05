@@ -15,7 +15,8 @@ class JwtMiddleware(object):
         token = request.COOKIES.get('access_token')
         
         
-        #Handle login -----------------------------------------------------------
+        #Login -----------------------------------------------------------
+        #Chequea que el usuario y la contraseña sean correctos. Si es así, pide a User el token JWT y lo setea en la cookie access_token.
         
         if request.path == "/api/login/":
             form = LoginForm(request.POST)
@@ -48,7 +49,7 @@ class JwtMiddleware(object):
                 return HttpResponseRedirect("/login/?error=invalid_credentials")
         
         
-        #Token validation -------------------------------------------------------
+        #Validación token -------------------------------------------------------
         if not token and request.path != "/login/" and request.path != "/api/login/" and request.path != "/api/signup/" and request.path != "/signup/" :
             return HttpResponseRedirect("/login/")
         
@@ -56,7 +57,8 @@ class JwtMiddleware(object):
             try:
                 payload = jwt.decode(token, "secret", algorithms=["HS256"])
                 
-                #Check if token is expired----------------------------------------
+                #Chequea si el token expiró y borra la cookie
+                #TODO: implementar refresh token
                 if payload["jwt_exp"] < str(datetime.datetime.now()):
                     response.delete_cookie("access_token")
                     #return HttpResponseRedirect("/login/?error=token_expired")

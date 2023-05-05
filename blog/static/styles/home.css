@@ -40,11 +40,17 @@ main {
     padding: 2rem;
     gap: 1rem;
     max-width: 1000px;
+    transition: all 0.3s ease-in-out;
 }
 
 .title {
     font-size: 5rem;
     text-align: left;
+    transition: all 0.3s ease-in-out;
+}
+
+.post-wrapper:has(.title:hover) {
+    filter: drop-shadow(0 0 0.75rem hsla(0, 0%, 0%, 0.5));
 }
 
 .post-body {
