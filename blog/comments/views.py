@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import Comment
-from .forms import NewCommentForm
+from .forms import NewCommentForm, DeleteCommentForm
 from users.models import User
 from posts.models import Post
 
@@ -38,3 +38,13 @@ def createComment(request):
     
     else:
         return HttpResponse(status=400)
+    
+def deleteComment(request):
+    form = DeleteCommentForm(request.POST)
+    if form.is_valid():
+        post_id = form.cleaned_data['post_id']
+        id = form.cleaned_data['id']
+        comment = Comment.objects.get(id=id)
+        comment.delete()
+    return HttpResponseRedirect('/article/?id='+str(post_id))
+    

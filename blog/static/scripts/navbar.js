@@ -23,7 +23,7 @@ document.addEventListener("click", e => {
     if (!popup.contains(target)) {
         popup.style.visibility = "hidden";
     }
-    if (target === profilePic.firstChild) {
+    if (target === profilePic.firstChild || target === profilePic) {
         popup.style.visibility = "visible";
     }
 });

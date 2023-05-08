@@ -6,3 +6,7 @@ class NewCommentForm(forms.Form):
         user_id = forms.IntegerField(widget=forms.HiddenInput())
         post_id = forms.IntegerField(widget=forms.HiddenInput())
         response_to_id = forms.IntegerField(widget=forms.HiddenInput(), required=False)
+        
+class DeleteCommentForm(forms.Form):
+    id = forms.IntegerField(widget=forms.HiddenInput())
+    post_id = forms.IntegerField(widget=forms.HiddenInput())

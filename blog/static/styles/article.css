@@ -203,6 +203,7 @@ main {
 
 .new-comment-wrapper,
 .comments-wrapper {
+    font-family: "Raleway", sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -226,8 +227,19 @@ main {
     border-bottom: 1px solid hsl(0, 0%, 50%);
 }
 
+.comment-first-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .comment-author {
     color: hsl(350, 100%, 60%);
+}
+
+.delete-comment {
+    color: hsl(0, 98%, 56%);
+    cursor: pointer;
 }
 
 .new-comment-wrapper form {

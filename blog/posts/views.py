@@ -4,7 +4,7 @@ from users.forms import EditPicForm
 
 from users.models import User
 
-from comments.forms import NewCommentForm
+from comments.forms import NewCommentForm, DeleteCommentForm
 from comments.models import Comment
 
 from .forms import EditPostForm, NewPostForm
@@ -35,9 +35,14 @@ def articleView(request):
     user_id = int(request.COOKIES.get('user_id'))
     user = User.objects.get(id=user_id)
     comments = Comment.objects.filter(post_id=id)
-    print(comments)
     new_comment_form = NewCommentForm()
-    return render(request, 'article.html', {"post":post, "user_id":user_id, "user":user, "new_comment_form":new_comment_form, "comments":comments })
+    delete_comment_form = DeleteCommentForm()
+    return render(request, 'article.html', {"post":post,
+                                            "user_id":user_id,
+                                            "user":user,
+                                            "new_comment_form":new_comment_form,
+                                            "comments":comments,
+                                            "delete_comment_form":delete_comment_form })
 
 #API------------------------------------------------
 
@@ -68,6 +73,7 @@ def editPost(request):
         print("error " + e)
         return HttpResponse("error " + e)
     
+#TODO refactorizar para usar un formulario
 def deletePost(request):
     id = request.GET.get('id')
     post = Post.objects.get(id=id)

@@ -38,7 +38,17 @@
                     <h3>Comentarios:</h3>
                     {% for comment in comments %}
                     <div class="comment">
-                        <p class="comment-author">{{comment.user.username}}</p>
+                        <div class="comment-first-row">
+                            <p class="comment-author">{{comment.user.username}}</p>
+                            {% if comment.user.id == user_id %}
+                            <form action="/api/deleteComment/" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="id" value="{{comment.id}}">
+                                <input type="hidden" name="post_id" value="{{post.id}}">
+                                <input class="delete-comment" type="submit" value="Eliminar">
+                            </form>
+                            {% endif %}
+                        </div>
                         <p class="comment-body">{{comment.content}}</p>
                     </div>
                     {% endfor %}
