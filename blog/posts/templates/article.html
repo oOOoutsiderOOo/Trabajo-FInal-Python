@@ -29,6 +29,11 @@
                     {% endif %}
 
                     <h2 class="title">{{post.title}}</h2>
+                    {% if post.image %}
+                        <div class="image-wrapper">
+                            <img class="post-image" src="{{post.image.url}}" alt="">
+                        </div>
+                    {% endif %}
                     <p class="post-body">{{post.body}}</p>
                     <div class="post-footer">
                         <div class="post-author-row">Escrito por <span class="post-author">{{post.author}}</span></div>

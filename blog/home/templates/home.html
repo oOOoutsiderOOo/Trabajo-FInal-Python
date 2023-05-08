@@ -22,6 +22,10 @@
             <div class="posts">
                 {% for post in posts %}
                 <article class="post-wrapper">
+                    {% if post.image %}
+                        <div class="background-gradient"></div>
+                        <img class="post-image" src="{{post.image.url}}" alt="">
+                    {% endif %}
                     <a href="/article?id={{post.id}}">
                         <h2 class="title">{{post.title}}</h2>
                     </a>

@@ -181,6 +181,13 @@ main {
     cursor: pointer;
 }
 
+.image-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .title {
     font-size: 5rem;
     text-align: left;
