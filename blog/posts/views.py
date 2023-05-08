@@ -47,13 +47,14 @@ def articleView(request):
 #API------------------------------------------------
 
 def newPost(request):
-    form = NewPostForm(request.POST)
+    form = NewPostForm(request.POST, request.FILES)
     if form.is_valid():
         title = form.cleaned_data['title']
         body = form.cleaned_data['body']
+        image = form.cleaned_data['image']
         user_id = request.COOKIES.get('user_id')
         user = User.objects.get(id=user_id)
-        post = Post(title=title, body=body, author=user)
+        post = Post(title=title, body=body, author=user, image=image)
         post.save()
         return HttpResponseRedirect('/')
     

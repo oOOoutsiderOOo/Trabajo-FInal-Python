@@ -17,7 +17,7 @@
         {% block main %} 
         <div class="wrapper">
             <h1>Escribe un nuevo artículo</h1>
-            <form class="form" action="/api/newPost/" method="post">
+            <form class="form" action="/api/newPost/" method="post" enctype="multipart/form-data" >
                 {% csrf_token %} {{form}}
                 <input class="post-button" type="submit" value="Publicar"></input>
             </form>

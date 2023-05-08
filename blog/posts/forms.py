@@ -4,6 +4,7 @@ class NewPostForm(forms.Form):
     
     title = forms.CharField(label="Título", max_length=50)
     body = forms.CharField(label="Cuerpo", max_length=10000, widget=forms.Textarea)
+    image = forms.ImageField(label="Imagen", required=False)
 
 class EditPostForm(forms.Form):
 
