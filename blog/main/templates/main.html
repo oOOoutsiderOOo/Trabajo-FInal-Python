@@ -15,7 +15,13 @@
             <a href="/">
                 <div class="app-title">Djablog</div>
             </a>
-            <div class="profile-picture"><img src="{{user.profile_image.url}}" alt=""></div>
+            <div class="profile-picture-wrapper">
+                {% if user.profile_image %}
+                    <img class="profile-picture" src="{{user.profile_image.url}}" alt="">
+                {% else %}
+                    <img class="profile-picture" src="{% static 'assets/default_profile_pic.png' %}" alt="">
+                {% endif %}
+            </div>
             <div class="popup-wrapper">
                 <div class="popup-item"><a class"menu-item" href="{% url 'newPostView' %}">Escribe un nuevo artículo</a></div>
                 <div class="popup-item" id="change-pic-button">Cambiar imagen de perfil</div>
