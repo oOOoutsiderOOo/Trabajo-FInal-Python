@@ -18,7 +18,7 @@
         {% block main%}
         <div class="wrapper">
             <h1>Edita tu artículo</h1>
-            <form class="form" action="/api/editPost/" method="post">
+            <form class="form" action="/api/editPost/" method="post" enctype="multipart/form-data">
                 {% csrf_token %} {{form}}
                 <input class="post-button" type="submit" value="Guardar cambios"></input>
             </form>
