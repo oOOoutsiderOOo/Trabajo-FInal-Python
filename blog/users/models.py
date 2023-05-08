@@ -7,6 +7,7 @@ class User(models.Model):
     username = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=500)
     profile_image_url = models.CharField(max_length=500)
+    profile_image = models.ImageField(upload_to='images/profile_images/', blank=True, null=True)
     role = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     

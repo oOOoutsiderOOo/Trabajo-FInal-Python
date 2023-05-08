@@ -67,11 +67,9 @@ def editPost(request):
             
             title = form.cleaned_data['title']
             body = form.cleaned_data['body']
-            print(form.cleaned_data['image'])
             if form.cleaned_data['image']:
                 image = form.cleaned_data['image']
                 post.image = image
-                print("imagen cambiada")
             
             post.title = title
             post.body = body

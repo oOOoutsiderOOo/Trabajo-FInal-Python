@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
-from .forms import LoginForm, SignupForm
+from .forms import LoginForm, SignupForm, EditPicForm
 from .models import User
 
 #Views ----------------------------------------------------------
@@ -69,9 +69,11 @@ def logout(request):
 
 #Cambia la foto de perfil del usuario.
 def editPic(request):
+    form = EditPicForm(request.POST, request.FILES)
     uid = request.COOKIES.get('user_id')
     user = User.objects.get(id=uid)
-    user.profile_image_url = request.POST.get('profile_picture')
-    user.save()
+    if form.is_valid():
+        user.profile_image = form.cleaned_data['profile_picture']
+        user.save()
     return HttpResponseRedirect("/")
 

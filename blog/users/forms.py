@@ -9,4 +9,5 @@ class LoginForm(forms.Form):
     password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña'}))
     
 class EditPicForm(forms.Form):
-    profile_picture = forms.CharField(max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Pega la URL de tu imagen aquí'}))
+    profile_picture = forms.ImageField(label="Imagen de perfil", required=False)
+    

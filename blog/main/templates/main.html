@@ -15,7 +15,7 @@
             <a href="/">
                 <div class="app-title">Djablog</div>
             </a>
-            <div class="profile-picture"><img src="{{user.profile_image_url}}" alt=""></div>
+            <div class="profile-picture"><img src="{{user.profile_image.url}}" alt=""></div>
             <div class="popup-wrapper">
                 <div class="popup-item"><a class"menu-item" href="{% url 'newPostView' %}">Escribe un nuevo artículo</a></div>
                 <div class="popup-item" id="change-pic-button">Cambiar imagen de perfil</div>
@@ -27,7 +27,7 @@
         {% block main %} {% endblock %}
         <div class="modal-wrapper">
             <div class="modal">
-                <form class="profile-pic-form" action="api/update_pic/" method="post">{% csrf_token %}{{profile_pic_form}}
+                <form class="profile-pic-form" action="api/update_pic/" method="post" enctype="multipart/form-data">{% csrf_token %}{{profile_pic_form}}
                     <button class="save-button" type="submit">Guardar</button>
                 </form>               
                 <button class="cancel-button">Cancelar</button>
