@@ -15,10 +15,10 @@
             <div class="wrapper">
                 <div class="form-wrapper">
                     <h1 class="title">Registro</h1>
-                    <p class="error-message hide">Username already in use</p>
+                    <p class="error-message hide">Nombre de usuario no disponible</p>
                     <form class="form" action="/api/signup/" method="post">
                         {% csrf_token %} {{form}}
-                        <input class="button" type="submit" value="Registrarse" />
+                        <input class="button" id="submit-button" type="submit" value="Registrarse" />
                     </form>
 
                     <p class="bottom-message">Ya tienes una cuenta? <a href="{% url 'loginPage' %}">Ingresa</a></p>

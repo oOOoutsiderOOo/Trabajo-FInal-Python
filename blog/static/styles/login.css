@@ -130,8 +130,7 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 40vh;
-    width: 30vw;
+    width: 40vw;
     backdrop-filter: blur(10px);
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.281));
     border-radius: 20px;
@@ -146,7 +145,7 @@ h1 {
 
 .error-message {
     color: hsl(0, 100%, 74%);
-    padding-bottom: 0.25rem;
+    padding-bottom: 0.5rem;
 }
 
 .hide {
@@ -199,7 +198,6 @@ input[type="password"] {
     padding: 0.75rem 1.5rem;
     margin-top: auto;
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.068));
-
 }
 
 .bottom-message {

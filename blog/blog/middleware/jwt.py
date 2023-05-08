@@ -16,6 +16,8 @@ class JwtMiddleware(object):
         
         
         #Login -----------------------------------------------------------
+        
+        
         #Chequea que el usuario y la contraseña sean correctos. Si es así, pide a User el token JWT y lo setea en la cookie access_token.
         
         if request.path == "/api/login/":

@@ -30,6 +30,11 @@ def signup(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
+            password2 = form.cleaned_data['password2']
+            
+            if password != password2:
+                return HttpResponseRedirect("/signup/?error=pass_mismatch")
+            
             role = "user"
             new_user = User(username=username, password=password, role=role)
             try:
@@ -41,7 +46,7 @@ def signup(request):
 # Chequea que el usuario exista y que la contraseña sea correcta. Si es así, setea la cookie user_id y redirige a home.       
 def login(request):
     if request.method == 'POST':
-        form = SignupForm(request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']

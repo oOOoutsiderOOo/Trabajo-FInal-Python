@@ -21,11 +21,17 @@ def newPostView(request):
     return render(request, 'newPost.html', {"form":form, "user":user,'profile_pic_form': profile_pic_form})
 
 def editPostView(request):
+    user_id = request.COOKIES.get('user_id')
     post = Post.objects.get(id=request.GET.get('id'))
+    post_user_id = post.author.id
+    
+    #Chequeamos que el autor del artículo sea el mismo que lo edita
+    if int(user_id) != post_user_id:
+        return HttpResponse("No tienes permiso para editar este post")
+    
     initial = {'id': post.id, 'title': post.title, 'body': post.body}
     form = EditPostForm(initial=initial)
     profile_pic_form = EditPicForm()
-    user_id = request.COOKIES.get('user_id')
     user = User.objects.get(id=user_id)
     return render(request, 'editPost.html', {"form":form, "user":user,'profile_pic_form': profile_pic_form})
 
@@ -52,8 +58,10 @@ def newPost(request):
         title = form.cleaned_data['title']
         body = form.cleaned_data['body']
         image = form.cleaned_data['image']
+        
         user_id = request.COOKIES.get('user_id')
         user = User.objects.get(id=user_id)
+        
         post = Post(title=title, body=body, author=user, image=image)
         post.save()
         return HttpResponseRedirect('/')

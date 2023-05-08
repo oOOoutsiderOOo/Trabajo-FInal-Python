@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from users.models import User
 from users.forms import EditPicForm
 
@@ -9,6 +9,10 @@ def index(request):
     posts = Post.objects.all()
     profile_pic_form = EditPicForm()
     uid = request.COOKIES.get('user_id')
+    if not uid: 
+        response = HttpResponseRedirect("/login/")
+        response.delete_cookie('access_token')
+        return response
     user = User.objects.get(id=uid)
     
     for post in posts:
