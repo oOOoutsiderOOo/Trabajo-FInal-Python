@@ -23,13 +23,18 @@ class User(models.Model):
         
         return encoded_jwt
     
+    @staticmethod
+    def get_uid_from_token(token):
+        payload = jwt.decode(token, "secret", algorithms=["HS256"])
+        return payload["uid"]
+    
     #Revisar esto
-    """ def check_jwt(self, token):
-        try:
-            payload = jwt.decode(token, "secret", algorithms=["HS256"])
-        except:
-            return False
-        return True """
+    # def check_jwt(self, token):
+    #     try:
+    #         payload = jwt.decode(token, "secret", algorithms=["HS256"])
+    #     except:
+    #         return False
+    #     return True
     
     def __str__(self):
         return self.username

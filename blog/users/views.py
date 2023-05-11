@@ -75,7 +75,7 @@ def logout(request):
 #Cambia la foto de perfil del usuario.
 def editPic(request):
     form = EditPicForm(request.POST, request.FILES)
-    uid = request.COOKIES.get('user_id')
+    uid = User.get_uid_from_token(request.COOKIES.get('access_token'))
     user = User.objects.get(id=uid)
     if form.is_valid():
         user.profile_image = form.cleaned_data['profile_picture']

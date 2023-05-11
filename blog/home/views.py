@@ -8,7 +8,7 @@ from posts.models import Post
 def index(request):
     posts = Post.objects.all()
     profile_pic_form = EditPicForm()
-    uid = request.COOKIES.get('user_id')
+    uid = User.get_uid_from_token(request.COOKIES.get('access_token'))
     if not uid: 
         response = HttpResponseRedirect("/login/")
         response.delete_cookie('access_token')

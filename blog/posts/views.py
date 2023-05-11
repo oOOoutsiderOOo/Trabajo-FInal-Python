@@ -14,14 +14,16 @@ from .models import Post
 #Views----------------------------------------------
 
 def newPostView(request):
+    user_id = User.get_uid_from_token(request.COOKIES.get('access_token'))
+    user = User.objects.get(id=user_id)
+    
     form = NewPostForm()
     profile_pic_form = EditPicForm()
-    user_id = request.COOKIES.get('user_id')
-    user = User.objects.get(id=user_id)
+    
     return render(request, 'newPost.html', {"form":form, "user":user,'profile_pic_form': profile_pic_form})
 
 def editPostView(request):
-    user_id = request.COOKIES.get('user_id')
+    user_id = User.get_uid_from_token(request.COOKIES.get('access_token'))
     post = Post.objects.get(id=request.GET.get('id'))
     post_user_id = post.author.id
     
@@ -30,25 +32,26 @@ def editPostView(request):
         return HttpResponse("No tienes permiso para editar este post")
     
     initial = {'id': post.id, 'title': post.title, 'body': post.body}
+    user = User.objects.get(id=user_id)
+    
     form = EditPostForm(initial=initial)
     profile_pic_form = EditPicForm()
-    user = User.objects.get(id=user_id)
+    
     return render(request, 'editPost.html', {"form":form, "user":user,'profile_pic_form': profile_pic_form})
 
 def articleView(request):
     id = request.GET.get('id')
+    
     post = Post.objects.get(id=id)
-    user_id = int(request.COOKIES.get('user_id'))
+    user_id = User.get_uid_from_token(request.COOKIES.get('access_token'))
     user = User.objects.get(id=user_id)
     comments = Comment.objects.filter(post_id=id)
+    
     new_comment_form = NewCommentForm()
     delete_comment_form = DeleteCommentForm()
-    return render(request, 'article.html', {"post":post,
-                                            "user_id":user_id,
-                                            "user":user,
-                                            "new_comment_form":new_comment_form,
-                                            "comments":comments,
-                                            "delete_comment_form":delete_comment_form })
+    
+    context = {"post":post, "user_id":user_id, "user":user, "new_comment_form":new_comment_form, "comments":comments, "delete_comment_form":delete_comment_form }
+    return render(request, 'article.html', context)
 
 #API------------------------------------------------
 
@@ -59,7 +62,7 @@ def newPost(request):
         body = form.cleaned_data['body']
         image = form.cleaned_data['image']
         
-        user_id = request.COOKIES.get('user_id')
+        user_id = User.get_uid_from_token(request.COOKIES.get('access_token'))
         user = User.objects.get(id=user_id)
         
         post = Post(title=title, body=body, author=user, image=image)
