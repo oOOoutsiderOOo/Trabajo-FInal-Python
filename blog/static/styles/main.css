@@ -100,15 +100,33 @@
     font-size: 1.25rem;
 }
 
-.save-button {
+.modal #id_profile-picture {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.modal input[type="file"] {
+    color: hsl(0, 0%, 6%);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.modal .save-button,
+.modal input::file-selector-button {
     background-color: hsl(350, 100%, 60%);
     color: hsl(0, 0%, 95%);
     padding: 0.5rem 1rem;
     border-radius: 5px;
+    border: none;
     cursor: pointer;
 }
 
-.cancel-button {
+.modal .cancel-button {
     background-color: hsl(0, 0%, 75%);
     color: hsl(0, 0%, 6%);
     padding: 0.5rem 1rem;

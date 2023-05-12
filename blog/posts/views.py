@@ -49,8 +49,10 @@ def articleView(request):
     
     new_comment_form = NewCommentForm()
     delete_comment_form = DeleteCommentForm()
+    profile_pic_form = EditPicForm()
+
     
-    context = {"post":post, "user_id":user_id, "user":user, "new_comment_form":new_comment_form, "comments":comments, "delete_comment_form":delete_comment_form }
+    context = {"post":post, "user_id":user_id, "user":user, "new_comment_form":new_comment_form, "comments":comments, "delete_comment_form":delete_comment_form, 'profile_pic_form': profile_pic_form }
     return render(request, 'article.html', context)
 
 #API------------------------------------------------
