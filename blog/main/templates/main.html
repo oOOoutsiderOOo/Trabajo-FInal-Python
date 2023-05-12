@@ -15,6 +15,7 @@
             <a href="/">
                 <div class="app-title">Djablog</div>
             </a>
+            {% block search %} {% endblock %}
             <div class="profile-picture-wrapper">
                 {% if user.profile_image %}
                     <img class="profile-picture" src="{{user.profile_image.url}}" alt="">
