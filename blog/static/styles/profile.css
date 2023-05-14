@@ -1,4 +1,78 @@
 main {
-    background-color: hsl(0, 0%, 6%);
     height: 100vh;
+    color: hsl(0, 0%, 95%);
+    padding: 6rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    align-self: center;
+}
+
+.profile {
+    background-color: hsl(0, 0%, 6%);
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1rem;
+    border-radius: 10px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 80vw;
+}
+
+.row,
+.profile-pic-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+}
+
+.profile-pic {
+    width: 10rem;
+}
+
+.label {
+    font-size: 1.5rem;
+    color: hsl(0, 0%, 75%);
+}
+
+.buttons-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.button {
+    font-size: 1rem;
+    background-color: hsl(350, 100%, 60%);
+    color: hsl(0, 0%, 95%);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2rem;
+    align-self: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+    background-color: hsl(350, 100%, 55%);
 }

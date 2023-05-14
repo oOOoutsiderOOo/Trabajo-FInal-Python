@@ -20,7 +20,13 @@ def loginView(request):
 
 #TODO
 def profileView(request):
-    return render(request, 'profile.html', {})
+    uid = User.get_uid_from_token(request.COOKIES.get('access_token'))
+    user = User.objects.get(id=uid)
+    profile_pic_form = EditPicForm()
+    
+    context = {'user' : user, "profile_pic_form" : profile_pic_form}
+    
+    return render(request, 'profile.html', context)
 
 #API ----------------------------------------------------------
 

@@ -1,15 +1,51 @@
-{%load static%}
+{% extends "main.html" %} {%load static%}
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% block head %}
         <link rel="stylesheet" href="{% static 'styles/global.css' %}" />
         <link rel="stylesheet" href="{% static 'styles/profile.css' %}" />
         <title>Profile</title>
+        {% endblock %}
     </head>
     <body>
-        <main></main>
+        {% block main %}
+        <main>
+            <img class="background" src="{% static 'bg4.jpg' %}" alt="" />
+            <div class="profile">
+                <h1>Mi perfil</h1>
+
+                <div class="profile-pic-row">
+                    <a href="">
+                        <img class="profile-pic" src="{{user.profile_image.url}}" alt="" />
+                    </a>
+                </div>
+
+                <div class="row">
+                    <p class="label">Nombre:</p>
+                    <p class="content">{{user.name}}</p>
+                </div>
+                <div class="row">
+                    <p class="label">Apellido:</p>
+                    <p class="content">{{user.surname}}</p>
+                </div>
+                <div class="row">
+                    <p class="label">Email:</p>
+                    <p class="content">{{user.email}}</p>
+                </div>
+                <div class="row">
+                    <p class="label">Sitio web:</p>
+                    <p class="content">{{user.website}}</p>
+                </div>
+                <div class="buttons-row">
+                    <a href="{% comment %} {% url 'edit_profile' %} {% endcomment %}" class="button">Editar perfil</a>
+                    <a href="{% comment %} {% url 'change_password' %} {% endcomment %}" class="button">Cambiar contraseña</a>
+                </div>
+            </div>
+        </main>
+        {% endblock %}
     </body>
 </html>
