@@ -12,3 +12,9 @@ class LoginForm(forms.Form):
 class EditPicForm(forms.Form):
     profile_picture = forms.ImageField(label="Imagen de perfil", required=False)
     
+class EditProfileForm(forms.Form):
+    name = forms.CharField(label = 'Nombre', max_length=50, required=False, widget=forms.TextInput(attrs={'placeholder': 'Nombre'}))
+    surname = forms.CharField(label = 'Apellido', max_length=50, required=False, widget=forms.TextInput(attrs={'placeholder': 'Apellido'}))
+    email = forms.EmailField(label = 'Email', max_length=50, required=False, widget=forms.TextInput(attrs={'placeholder': 'Email'}))
+    website = forms.URLField(label = 'Sitio web', max_length=50, required=False, widget=forms.TextInput(attrs={'placeholder': 'Sitio web'}))
+    

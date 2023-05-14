@@ -1,0 +1,34 @@
+{% extends "main.html" %} {%load static%}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% block head %}
+        <link rel="stylesheet" href="{% static 'styles/profile.css' %}" />
+        <title>Perfil</title>
+        {% endblock %}
+    </head>
+    <body>
+        {% block main %}
+        <main>
+            <img class="background" src="{% static 'bg4.jpg' %}" alt="" />
+            <div class="profile">
+                <h1>Mi perfil</h1>
+
+                <div class="profile-pic-row">
+                    <a href="">
+                        <img class="profile-pic" src="{{user.profile_image.url}}" alt="" />
+                    </a>
+                </div>
+
+                <form action="/api/edit_profile/" method="post">
+                    {% csrf_token %} {{ edit_form }}
+                    <input type="submit" class="button" value="Guardar cambios" />
+                </form>
+            </div>
+        </main>
+        {% endblock %}
+    </body>
+</html>

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
-from .forms import LoginForm, SignupForm, EditPicForm
+from .forms import LoginForm, SignupForm, EditPicForm, EditProfileForm
 from .models import User
 
 #Views ----------------------------------------------------------
@@ -18,7 +18,6 @@ def loginView(request):
     
     return render(request, 'login.html', {"form":form})
 
-#TODO
 def profileView(request):
     uid = User.get_uid_from_token(request.COOKIES.get('access_token'))
     user = User.objects.get(id=uid)
@@ -27,6 +26,18 @@ def profileView(request):
     context = {'user' : user, "profile_pic_form" : profile_pic_form}
     
     return render(request, 'profile.html', context)
+
+def editProfileView(request):
+    uid = User.get_uid_from_token(request.COOKIES.get('access_token'))
+    user = User.objects.get(id=uid)
+    profile_pic_form = EditPicForm()
+    
+    initial = {'name' : user.name, 'surname' : user.surname, 'email' : user.email, 'website': user.website}
+    edit_form = EditProfileForm(initial=initial)
+    
+    context = {'user' : user, "profile_pic_form" : profile_pic_form, "edit_form" : edit_form}
+    
+    return render(request, 'edit_profile.html', context)
 
 #API ----------------------------------------------------------
 
@@ -87,4 +98,17 @@ def editPic(request):
         user.profile_image = form.cleaned_data['profile_picture']
         user.save()
     return HttpResponseRedirect("/")
+
+def editProfile(request):
+    form = EditProfileForm(request.POST)
+    uid = User.get_uid_from_token(request.COOKIES.get('access_token'))
+    user = User.objects.get(id=uid)
+    
+    if form.is_valid():
+        user.name = form.cleaned_data['name']
+        user.surname = form.cleaned_data['surname']
+        user.email = form.cleaned_data['email']
+        user.website = form.cleaned_data['website']
+        user.save()
+    return HttpResponseRedirect("/profile/")
 

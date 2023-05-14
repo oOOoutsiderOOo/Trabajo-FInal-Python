@@ -8,7 +8,7 @@
         {% block head %}
         <link rel="stylesheet" href="{% static 'styles/global.css' %}" />
         <link rel="stylesheet" href="{% static 'styles/profile.css' %}" />
-        <title>Profile</title>
+        <title>Perfil</title>
         {% endblock %}
     </head>
     <body>
@@ -41,7 +41,7 @@
                     <p class="content">{{user.website}}</p>
                 </div>
                 <div class="buttons-row">
-                    <a href="{% comment %} {% url 'edit_profile' %} {% endcomment %}" class="button">Editar perfil</a>
+                    <a href="{% url 'editProfileView' %}" class="button">Editar perfil</a>
                     <a href="{% comment %} {% url 'change_password' %} {% endcomment %}" class="button">Cambiar contraseña</a>
                 </div>
             </div>
