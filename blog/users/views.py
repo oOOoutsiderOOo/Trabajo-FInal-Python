@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
-from .forms import LoginForm, SignupForm, EditPicForm, EditProfileForm
+from .forms import ChangePasswordForm, LoginForm, SignupForm, EditPicForm, EditProfileForm
 from .models import User
 
 #Views ----------------------------------------------------------
@@ -21,9 +21,11 @@ def loginView(request):
 def profileView(request):
     uid = User.get_uid_from_token(request.COOKIES.get('access_token'))
     user = User.objects.get(id=uid)
-    profile_pic_form = EditPicForm()
     
-    context = {'user' : user, "profile_pic_form" : profile_pic_form}
+    profile_pic_form = EditPicForm()
+    change_password_form = ChangePasswordForm()
+    
+    context = {'user' : user, "profile_pic_form" : profile_pic_form, "change_password_form" : change_password_form}
     
     return render(request, 'profile.html', context)
 
@@ -111,4 +113,27 @@ def editProfile(request):
         user.website = form.cleaned_data['website']
         user.save()
     return HttpResponseRedirect("/profile/")
+
+def changePassword(request):
+    form = ChangePasswordForm(request.POST)
+    
+    uid = User.get_uid_from_token(request.COOKIES.get('access_token'))
+    user = User.objects.get(id=uid)
+    
+    if form.is_valid():
+        old_password = form.cleaned_data['old_password']
+        new_password = form.cleaned_data['new_password']
+        new_password2 = form.cleaned_data['new_password2']
+        
+        if old_password != user.password:
+            return HttpResponseRedirect("/profile/?error=wrong_password")
+        
+        if new_password != new_password2:
+            return HttpResponseRedirect("/profile/?error=pass_mismatch")
+        
+        user.password = new_password
+        user.save()
+        return HttpResponseRedirect("/profile/")
+        
+
 

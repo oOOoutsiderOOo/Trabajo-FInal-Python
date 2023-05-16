@@ -18,3 +18,8 @@ class EditProfileForm(forms.Form):
     email = forms.EmailField(label = 'Email', max_length=50, required=False, widget=forms.TextInput(attrs={'placeholder': 'Email'}))
     website = forms.URLField(label = 'Sitio web', max_length=50, required=False, widget=forms.TextInput(attrs={'placeholder': 'Sitio web'}))
     
+class ChangePasswordForm(forms.Form):
+    old_password = forms.CharField(label = 'Contraseña actual', max_length=50, widget=forms.PasswordInput)
+    new_password = forms.CharField(label = 'Nueva contraseña', max_length=50, widget=forms.PasswordInput)
+    new_password2 = forms.CharField(label = 'Confirme su nueva contraseña', max_length=50, widget=forms.PasswordInput(attrs={'onkeyup' : 'validateNewPassword()'}))
+    

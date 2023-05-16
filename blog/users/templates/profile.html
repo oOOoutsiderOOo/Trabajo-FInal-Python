@@ -42,10 +42,24 @@
                 </div>
                 <div class="buttons-row">
                     <a href="{% url 'editProfileView' %}" class="button">Editar perfil</a>
-                    <a href="{% comment %} {% url 'change_password' %} {% endcomment %}" class="button">Cambiar contraseña</a>
+                    <button onclick="openModal()" class="button">Cambiar contraseña</button>
+                </div>
+            </div>
+
+            <div class="change-password-modal-wrapper">
+                <div class="change-password-modal">
+                    <form class="change-password-form" action="/api/change_password/" method="post">
+                        {% csrf_token %} {{change_password_form}}
+                        <div class="mismatch">Las contraseñas no coinciden</div>
+                        <div class="buttons-row">
+                            <button class="button cancel-button" type="button" onclick="closeModal()">Cancelar</button>
+                            <button class="button change-button" id="change-button" type="submit" disabled>Cambiar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </main>
+        <script src="{% static 'scripts/changePassword.js'%}"></script>
         {% endblock %}
     </body>
 </html>

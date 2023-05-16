@@ -14,7 +14,8 @@ urlpatterns = [
     path("api/login/", views.login, name="loginQuery"),
     path("api/logout/", views.logout, name="logoutQuery"),
     path("api/update_pic/", views.editPic, name="updatePicQuery"),
-    path("api/edit_profile/", views.editProfile, name="editProfileQuery")
+    path("api/edit_profile/", views.editProfile, name="editProfileQuery"),
+    path("api/change_password/", views.changePassword, name="changePasswordQuery")
     
     
 ]

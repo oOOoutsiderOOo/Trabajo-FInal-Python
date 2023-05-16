@@ -1,8 +1,8 @@
 const usernameInput = document.querySelector("#id_username");
 const passwordInput = document.querySelector("#id_password");
-const confirmPasswordInput = document.querySelector("#id_password2");
+const newPassword2 = document.querySelector("#id_password2");
 
-const submitButton = document.querySelector("#submit-button");
+const changeButton = document.querySelector("#submit-button");
 
 const errorMessage = document.querySelector(".error-message");
 
@@ -30,21 +30,21 @@ if (passMismatch) {
 //TODO Agregar validación de caracteres especiales
 function validatePassword() {
     const pass1 = passwordInput.value;
-    const pass2 = confirmPasswordInput.value;
+    const pass2 = newPassword2.value;
     if (pass1 !== pass2) {
-        submitButton.disabled = true;
-        submitButton.style.cursor = "not-allowed";
-        submitButton.style.backgroundColor = "#aaa";
+        changeButton.disabled = true;
+        changeButton.style.cursor = "not-allowed";
+        changeButton.style.backgroundColor = "#aaa";
         errorMessage.textContent = "Las contraseñas no coinciden";
         passwordInput.classList.add("is-invalid");
-        confirmPasswordInput.classList.add("is-invalid");
+        newPassword2.classList.add("is-invalid");
         errorMessage.classList.remove("hide");
     } else {
-        submitButton.disabled = false;
-        submitButton.style.cursor = "pointer";
-        submitButton.style.backgroundColor = "hsl(209, 100%, 60%)";
+        changeButton.disabled = false;
+        changeButton.style.cursor = "pointer";
+        changeButton.style.backgroundColor = "hsl(209, 100%, 60%)";
         passwordInput.classList.remove("is-invalid");
-        confirmPasswordInput.classList.remove("is-invalid");
+        newPassword2.classList.remove("is-invalid");
         errorMessage.classList.add("hide");
     }
 }

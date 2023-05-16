@@ -37,7 +37,7 @@ h1 {
 
 .row,
 .profile-pic-row,
-form {
+.edit-form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -81,9 +81,76 @@ input[type="text"] {
     cursor: pointer;
     margin-top: 2rem;
     align-self: center;
-    transition: all 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .button:hover {
     background-color: hsl(350, 100%, 55%);
+}
+
+.change-password-modal-wrapper {
+    visibility: hidden;
+    position: fixed;
+    inset: 0;
+    background-color: hsla(0, 0%, 0%, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.change-password-modal {
+    color: hsl(0, 0%, 6%);
+    background-color: hsl(0, 0%, 95%);
+    padding: 2rem;
+    border-radius: 10px;
+    min-width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.change-password-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+}
+
+.change-password-form label {
+    color: hsl(0, 0%, 35%);
+}
+
+.change-password-form input[type="password"] {
+    width: 100%;
+    border: 1px solid hsl(0, 0%, 75%);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.change-password-form .change-button {
+    background-color: hsl(0, 0%, 75%);
+    color: hsl(0, 0%, 6%);
+    cursor: not-allowed;
+}
+
+.change-password-form .cancel-button {
+    background-color: hsl(0, 0%, 75%);
+    color: hsl(0, 0%, 6%);
+}
+
+.change-password-form .cancel-button:hover {
+    background-color: hsl(0, 0%, 70%);
+}
+
+.mismatch {
+    visibility: hidden;
+    color: hsl(0, 98%, 56%);
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0;
+    text-align: center;
+    align-self: center;
 }

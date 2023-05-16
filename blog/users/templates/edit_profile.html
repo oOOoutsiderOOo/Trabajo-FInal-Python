@@ -19,11 +19,11 @@
 
                 <div class="profile-pic-row">
                     <a href="">
-                        <img class="profile-pic" src="{{user.profile_image.url}}" alt="" />
+                        <img class="profile-pic" id="profile-pic" src="{{user.profile_image.url}}" alt="" />
                     </a>
                 </div>
 
-                <form action="/api/edit_profile/" method="post">
+                <form action="/api/edit_profile/" method="post" class="edit-form">
                     {% csrf_token %} {{ edit_form }}
                     <input type="submit" class="button" value="Guardar cambios" />
                 </form>
