@@ -5,7 +5,7 @@ popup = document.querySelector(".popup-wrapper");
 changePicButton = document.querySelector("#change-pic-button");
 
 modal = document.querySelector(".modal-wrapper");
-cancelButton = document.querySelector(".cancel-button");
+cancelButton = document.querySelector("#modal-cancel-button");
 
 // Menú pop up
 
@@ -41,9 +41,11 @@ changePicButton.addEventListener("click", () => {
     modal.style.visibility = "visible";
 });
 
-profilePicInProfile.addEventListener("click", () => {
-    modal.style.visibility = "visible";
-});
+if (profilePicInProfile !== null) {
+    profilePicInProfile.addEventListener("click", () => {
+        modal.style.visibility = "visible";
+    });
+}
 
 cancelButton.addEventListener("click", () => {
     modal.style.visibility = "hidden";

@@ -38,7 +38,7 @@
                 <form class="profile-pic-form" action="api/update_pic/" method="post" enctype="multipart/form-data">{% csrf_token %}{{profile_pic_form}}
                     <button class="save-button" type="submit">Guardar</button>
                 </form>               
-                <button class="cancel-button">Cancelar</button>
+                <button class="cancel-button" id="modal-cancel-button">Cancelar</button>
             </div>
         </div>
         <script src="{% static 'scripts/paragraphs.js'%}"></script>
