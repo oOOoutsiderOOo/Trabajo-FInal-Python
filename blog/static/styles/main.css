@@ -59,6 +59,54 @@
     color: hsl(350, 100%, 60%);
 }
 
+/* *********************** Footer ******************************* */
+
+.footer {
+    background-color: hsl(0, 0%, 6%);
+    color: hsl(0, 0%, 95%);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2rem;
+}
+
+.medium-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 4rem 2rem 4rem;
+    text-align: center;
+}
+
+.medium-row .column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.medium-row h3 {
+    font-weight: 700;
+}
+
+.small-row {
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* *********************** Modal ******************************* */
 .modal-wrapper {
     visibility: hidden;
     position: fixed;

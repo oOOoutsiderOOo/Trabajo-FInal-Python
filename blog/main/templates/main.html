@@ -33,6 +33,9 @@
     </header>
     <body>
         {% block main %} {% endblock %}
+
+
+
         <div class="modal-wrapper">
             <div class="modal">
                 <form class="profile-pic-form" action="api/update_pic/" method="post" enctype="multipart/form-data">{% csrf_token %}{{profile_pic_form}}
@@ -40,8 +43,38 @@
                 </form>               
                 <button class="cancel-button" id="modal-cancel-button">Cancelar</button>
             </div>
+        
         </div>
         <script src="{% static 'scripts/paragraphs.js'%}"></script>
         <script src="{% static 'scripts/navbar.js'%}"></script>
     </body>
+    <footer class="footer">
+        <div class="medium-row">
+            <div class="column">
+                <h3>Coderhouse</h3>
+                <p>Item 1</p>
+                <p>Item 2</p>
+                <p>Item 3</p>
+                <p>Item 4</p>
+            </div>
+            <div class="column">
+                <h3>Links</h3>
+                <p><a href="{% url 'Home' %}">Home</a></p>
+                <p><a href="">Acerca de</a></p>
+                <p><a href="{% url 'profilePage' %}">Perfil</a></p>
+                <p><a href="{% url 'logoutQuery' %}">Logout</a></p>
+            </div>
+            <div class="column">
+                <h3>Contacto</h3>
+                <p>Ciudad de Buenos Aires, xxxx, AR</p>
+                <p>info@example.com</p>
+                <p>+54 9 1111-1111</p>
+            </div>
+        </div>
+        <div class="small-row">
+            <p>©2023 Nicolás Ciancaglini - Todos los derechos reservados</p>
+            <p><span>Términos y condiciones</span>  |  <span>Privacidad</span></p>
+        </div>
+
+    </footer>
 </html>
