@@ -16,12 +16,12 @@
         <main>
             <img class="background" src="{% static 'bg4.jpg' %}" alt="" />
             <div class="profile">
-                <h1>Mi perfil</h1>
+                <a href="{% url 'profilePage'%}">
+                    <h1>Mi perfil</h1>
+                </a>
 
                 <div class="profile-pic-row">
-                    <a href="">
-                        <img class="profile-pic" src="{{user.profile_image.url}}" alt="" />
-                    </a>
+                    <img class="profile-pic" src="{{user.profile_image.url}}" alt="" />
                 </div>
 
                 <div class="row">
@@ -52,8 +52,8 @@
                         {% csrf_token %} {{change_password_form}}
                         <div class="mismatch">Las contraseñas no coinciden</div>
                         <div class="buttons-row">
-                            <button class="button cancel-button" type="button" onclick="closeModal()">Cancelar</button>
-                            <button class="button change-button" id="change-button" type="submit" disabled>Cambiar</button>
+                            <button class="button change-password-cancel-button" type="button" onclick="closeModal()">Cancelar</button>
+                            <button class="button change-password-change-button" id="change-button" type="submit" disabled>Cambiar</button>
                         </div>
                     </form>
                 </div>

@@ -15,17 +15,19 @@
         <main>
             <img class="background" src="{% static 'bg4.jpg' %}" alt="" />
             <div class="profile">
-                <h1>Mi perfil</h1>
+                <a href="{% url 'profilePage'%}">
+                    <h1>Mi perfil</h1>
+                </a>
 
                 <div class="profile-pic-row">
-                    <a href="">
-                        <img class="profile-pic" id="profile-pic" src="{{user.profile_image.url}}" alt="" />
-                    </a>
+                    <img class="profile-pic" src="{{user.profile_image.url}}" alt="" />
                 </div>
 
                 <form action="/api/edit_profile/" method="post" class="edit-form">
                     {% csrf_token %} {{ edit_form }}
-                    <input type="submit" class="button" value="Guardar cambios" />
+                    <div class="button-row">
+                        <input type="submit" class="button" value="Guardar cambios" />
+                    </div>
                 </form>
             </div>
         </main>

@@ -15,12 +15,6 @@ main {
     z-index: -1;
 }
 
-h1 {
-    font-size: 4rem;
-    margin-bottom: 2rem;
-    align-self: center;
-}
-
 .profile {
     background-color: hsl(0, 0%, 6%);
     font-size: 2rem;
@@ -35,6 +29,13 @@ h1 {
     max-width: 80vw;
 }
 
+.profile a:has(h1) {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    align-self: center;
+    text-align: center;
+}
+
 .row,
 .profile-pic-row,
 .edit-form {
@@ -46,6 +47,8 @@ h1 {
 
 .profile-pic {
     width: 10rem;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .label,
@@ -136,12 +139,12 @@ input[type="text"] {
     cursor: not-allowed;
 }
 
-.change-password-form .cancel-button {
+.change-password-form .change-password-cancel-button {
     background-color: hsl(0, 0%, 75%);
     color: hsl(0, 0%, 6%);
 }
 
-.change-password-form .cancel-button:hover {
+.change-password-form .change-password-cancel-button:hover {
     background-color: hsl(0, 0%, 70%);
 }
 

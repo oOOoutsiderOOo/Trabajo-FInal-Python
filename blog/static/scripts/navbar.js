@@ -1,4 +1,5 @@
 profilePic = document.querySelector(".profile-picture");
+profilePicInProfile = document.querySelector(".profile-pic");
 
 popup = document.querySelector(".popup-wrapper");
 changePicButton = document.querySelector("#change-pic-button");
@@ -37,6 +38,10 @@ popup.addEventListener("click", () => {
 // Modal para cambiar la foto de perfil
 
 changePicButton.addEventListener("click", () => {
+    modal.style.visibility = "visible";
+});
+
+profilePicInProfile.addEventListener("click", () => {
     modal.style.visibility = "visible";
 });
 
