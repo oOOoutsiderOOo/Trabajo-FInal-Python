@@ -11,6 +11,8 @@ def index(request):
     profile_pic_form = EditPicForm()
     search_form = SearchForm()
     page_number = request.GET.get('page')
+    
+    #cantidad de posts por página
     posts_per_page = 3
     
     #intenta recuperar el uid del token de acceso, si no lo consigue redirige a login
@@ -22,11 +24,9 @@ def index(request):
     user = User.objects.get(id=uid)
     
     #chequea si existe una busqueda en la url, luego trae los posts de la bd y los recorta a 200 caracteres
-    #la búsqueda es en el título y en el cuerpo del post
-    search_string = request.GET.get('search')
-    
+    search_string = request.GET.get('search')     
     if search_string:
-        posts = Post.objects.filter(Q(title__icontains = search_string) | Q(body__icontains = search_string))
+        posts = Post.objects.filter(Q(title__icontains = search_string) | Q(body__icontains = search_string)) #la búsqueda es en el título y en el cuerpo del post
     else :
         posts = Post.objects.all()       
     for post in posts:
