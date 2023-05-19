@@ -10,6 +10,8 @@ from posts.models import Post
 def index(request):
     profile_pic_form = EditPicForm()
     search_form = SearchForm()
+    page_number = request.GET.get('page')
+    posts_per_page = 3
     
     #intenta recuperar el uid del token de acceso, si no lo consigue redirige a login
     uid = User.get_uid_from_token(request.COOKIES.get('access_token'))
@@ -26,12 +28,22 @@ def index(request):
     if search_string:
         posts = Post.objects.filter(Q(title__icontains = search_string) | Q(body__icontains = search_string))
     else :
-        posts = Post.objects.all()
-        
+        posts = Post.objects.all()       
     for post in posts:
         post.body = post.body[:200] + "..."
         
-    context = {'posts': posts, "user": user, 'profile_pic_form': profile_pic_form, 'search_form': search_form}
+    #Chequea la página actual, si no se especifica, es la primera
+    if not page_number: page_number = 1
+    page_number = int(page_number)
+    #Asigna a posts los posts de la página actual
+    posts = posts[(page_number-1)*posts_per_page:page_number*posts_per_page] 
+    page= {
+        "current": page_number,
+        "prev" : page_number-1,
+        "next" : page_number+1,
+    }   
+        
+    context = {'posts': posts, "user": user, 'profile_pic_form': profile_pic_form, 'search_form': search_form, "page": page}
         
     return render(request, 'home.html', context)
 

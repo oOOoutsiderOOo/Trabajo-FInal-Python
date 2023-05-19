@@ -51,6 +51,19 @@
                 </div>
                 {% endif %}
             </div>
+            <div class="back-next-row">
+                {% if page.current != 1 %}
+                <a class="back" href="?page={{ page.prev }}"><h1>Anterior</h1></a>
+                {% else %}
+                <a class="back" style="visibility: hidden" href="?page={{ page.prev }}"><h1>Anterior</h1></a>
+                {% endif %}
+                {% if page.current >= 1 and posts %}
+                <a class="next" href="?page={{ page.next }}"><h1>Siguiente</h1></a>
+                {% else %}
+                <a class="next" style="visibility: hidden" href="?page={{ page.next }}"><h1>Siguiente</h1></a>
+                {% endif %}
+
+            </div>
         </main>
         {% endblock %}
 
