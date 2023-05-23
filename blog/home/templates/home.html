@@ -55,20 +55,22 @@
                 {% if page.current != 1 %}
                 <a class="back" href="?page={{ page.prev }}">
                     <img class="arrow-left" src="{% static 'assets/chevron.png' %}" alt="">
-                    <h1>Anterior</h1>
+                    <p>Anterior</p>
                 </a>
                 {% else %}
                 <a class="back" style="visibility: hidden" href="?page={{ page.prev }}">
-                    <h1>Anterior</h1>
+                    <p>Anterior</p>
                 </a>
                 {% endif %}
                 {% if page.current >= 1 and posts %}
                 <a class="next" href="?page={{ page.next }}">
-                    <h1>Siguiente</h1>
+                    <p>Siguiente</p>
                     <img class="arrow-right" src="{% static 'assets/chevron.png' %}" alt="">
                 </a>
                 {% else %}
-                <a class="next" style="visibility: hidden" href="?page={{ page.next }}"><h1>Siguiente</h1></a>
+                <a class="next" style="visibility: hidden" href="?page={{ page.next }}">
+                    <p>Siguiente</p>
+                </a>
                 {% endif %}
 
             </div>

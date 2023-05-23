@@ -87,6 +87,10 @@ main {
     transition: all 0.3s ease-in-out;
 }
 
+.title:hover {
+    color: hsl(350, 100%, 60%);
+}
+
 .post-wrapper:has(.title:hover) {
     filter: drop-shadow(0 0 0.75rem hsla(0, 0%, 0%, 0.5));
 }
@@ -161,6 +165,12 @@ main {
     align-items: center;
     gap: 1rem;
     color: hsl(0, 0%, 95%);
+    font-size: 1.25rem;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
+}
+
+.back:hover,
+.next:hover {
+    color: hsl(350, 100%, 60%);
 }
